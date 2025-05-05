@@ -2,7 +2,7 @@
 Changelog for package rmf_demos_tasks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.5.0 (2024-11-27)
+2.4.1 (XXX-MM-DD)
 ------------------
 * Add proto-reservation node as core part of RMF (`#212 <https://github.com/open-rmf/rmf_demos/issues/212>`_)
 * Fix existing style issues (`#252 <https://github.com/open-rmf/rmf_demos/issues/252>`_)
