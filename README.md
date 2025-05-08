@@ -87,6 +87,12 @@ git clone https://github.com/cardboardcode/rmf_demos.git --branch jazzy_gary_dev
 docker build -t rmf_demos:jazzy .
 ```
 
+Enable X11 forwarding for Docker-to-Host graphical interface:
+
+```bash
+xhost +local:docker
+```
+
 ## Demo Worlds
 
 * [Hotel World](#Hotel-World)
@@ -137,13 +143,7 @@ An indoor office environment for robots to navigate around. It includes a bevera
 
 #### Run
 
-1. Enable X11 forwarding for Docker-to-Host graphical interface:
-
-```bash
-xhost +local:docker
-```
-
-2. Run docker container based on aforementioned docker image:
+Run docker container based on aforementioned docker image:
 
 ```bash
 docker run -it --rm \
