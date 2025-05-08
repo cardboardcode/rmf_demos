@@ -158,12 +158,12 @@ Now we will showcase 2 types of Tasks: **Delivery** and **Loop**
 
 You can request the robot to deliver a can of coke from `pantry` to `hardware_2` through the following:
 ```bash
-ros2 run rmf_demos_tasks dispatch_delivery -p pantry -ph coke_dispenser -d hardware_2 -dh coke_ingestor --use_sim_time
+docker exec -it rmf_demos_c bash -c "source /ros_entrypoint.sh && ros2 run rmf_demos_tasks dispatch_delivery -p pantry -ph coke_dispenser -d hardware_2 -dh coke_ingestor --use_sim_time"
 ```
 
 You can also request the robot to move back and forth between `coe` and `lounge` through the following:
 ```bash
-ros2 run rmf_demos_tasks dispatch_patrol -p coe lounge -n 3 --use_sim_time
+docker exec -it rmf_demos_c bash -c "source /ros_entrypoint.sh && ros2 run rmf_demos_tasks dispatch_patrol -p coe lounge -n 1 --use_sim_time"
 ```
 
 ![](../media/loop_request.gif)
