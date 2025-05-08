@@ -116,12 +116,34 @@ Robots running Clean and Loop Task:
 ### Office World
 An indoor office environment for robots to navigate around. It includes a beverage dispensing station, controllable doors and laneways which are integrated into RMF.
 
-```bash
-source ~/rmf_demos_ws/install/setup.bash
-ros2 launch rmf_demos_gz office.launch.xml
+#### Build
 
-# Or, run with ignition simulator
-ros2 launch rmf_demos_gz office.launch.xml
+```bash
+docker build -t rmf_demos:jazzy .
+```
+
+#### Run
+
+1. Enable X11 forwarding for Docker-to-Host graphical interface:
+
+```bash
+xhost +local:docker
+```
+
+2. Run docker container based on aforementioned docker image:
+
+```bash
+docker run -it --rm \
+  --name rmf_demos_c \
+  --network=host \
+  -e DISPLAY=$DISPLAY \
+  -e GZ_SIM_RESOURCE_PATH=/rmf_demo_ws/src/rmf_demos_assets/models \
+  -e GZ_SIM_SYSTEM_PLUGIN_PATH=/rmf_demo_ws/install/lib:/rmf_demo_ws/install/lib/rmf_building_sim_gz_plugins:/rmf_demo_ws/install/lib/rmf_robot_sim_gz_plugins \
+  -v /dev/shm:/dev/shm \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  rmf_demos:jazzy bash -c \
+  "source /ros_entrypoint.sh && \
+  ros2 launch rmf_demos_gz office.launch.xml"
 ```
 
 Now we will showcase 2 types of Tasks: **Delivery** and **Loop**
