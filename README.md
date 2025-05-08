@@ -141,6 +141,7 @@ docker run -it --rm \
   -e DISPLAY=$DISPLAY \
   -e GZ_SIM_RESOURCE_PATH=/rmf_demo_ws/src/rmf_demos_assets/models \
   -e GZ_SIM_SYSTEM_PLUGIN_PATH=/rmf_demo_ws/install/lib:/rmf_demo_ws/install/lib/rmf_building_sim_gz_plugins:/rmf_demo_ws/install/lib/rmf_robot_sim_gz_plugins \
+  -e GZ_GUI_PLUGIN_PATH=/rmf_demo_ws/install/lib/rmf_building_sim_gz_plugins \
   -v /dev/shm:/dev/shm \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   rmf_demos:jazzy bash -c \
