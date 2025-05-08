@@ -146,6 +146,12 @@ docker run -it --rm \
   ros2 launch rmf_demos_gz office.launch.xml"
 ```
 
+#### Verify
+
+By running the command above, you should see an RViz and Gazebo Ignition window appear similar to what is shown below:
+
+![](docs/office_simulation_docker_verify.png)
+
 Now we will showcase 2 types of Tasks: **Delivery** and **Loop**
 
 ![](../media/delivery_request.gif?raw=true)
