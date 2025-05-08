@@ -63,9 +63,4 @@
     </node>
   </group>
 
-  <!-- Proto-Reservation system-->
-  <group  if="$(var use_reservation_node)">
-    <node pkg="rmf_reservation_node" exec="queue_manager"></node>
-  </group>
-
 </launch>

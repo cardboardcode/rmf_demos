@@ -533,16 +533,6 @@ class FleetManager(Node):
             data['replan'] = True
         else:
             data['replan'] = False
-        if (robot.state.mode.mode == RobotMode.MODE_ACTION_COMPLETED):
-            self.get_logger().info(
-                f'Robot [{robot_name} completed performing its action')
-            completed_cmd_id = 0
-            msg = self._make_mode_request(robot_name, completed_cmd_id,
-                                          RobotMode.MODE_IDLE)
-            # Mark action execution as finished
-            self.action_completed_pub.publish(msg)
-            # # Request for robot idle
-            self.mode_pub.publish(msg)
 
         return data
 
