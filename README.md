@@ -116,20 +116,27 @@ This demonstrates an integration of multiple fleets of robots with varying capab
 To launch the world and the schedule visualizer,
 
 ```bash
-source ~/rmf_ws/install/setup.bash
-ros2 launch rmf_demos_gz hotel.launch.xml
-
-# Or, run with ignition simulator
-ros2 launch rmf_demos_gz hotel.launch.xml
+docker run -it --rm \
+  --name rmf_demos_c \
+  --network=host \
+  -e DISPLAY=$DISPLAY \
+  -e GZ_SIM_RESOURCE_PATH=/rmf_demo_ws/src/rmf_demos_assets/models \
+  -e GZ_SIM_SYSTEM_PLUGIN_PATH=/rmf_demo_ws/install/lib:/rmf_demo_ws/install/lib/rmf_building_sim_gz_plugins:/rmf_demo_ws/install/lib/rmf_robot_sim_gz_plugins \
+  -e GZ_GUI_PLUGIN_PATH=/rmf_demo_ws/install/lib/rmf_building_sim_gz_plugins \
+  -v /dev/shm:/dev/shm \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  rmf_demos:jazzy bash -c \
+  "source /ros_entrypoint.sh && \
+  ros2 launch rmf_demos_gz hotel.launch.xml"
 ```
 
 Here, we will showcase 2 types of Tasks: **Loop** and **Clean**, you can dispatch them via CLI as follows:
 ```bash
-ros2 run rmf_demos_tasks dispatch_patrol -p restaurant  L3_master_suite -n 1 --use_sim_time
+docker exec -it rmf_demos_c bash -c "source /ros_entrypoint.sh && ros2 run rmf_demos_tasks dispatch_patrol -p restaurant  L3_master_suite -n 1 --use_sim_time"
 ```
 
 ```bash
-ros2 run rmf_demos_tasks dispatch_clean -cs clean_lobby --use_sim_time
+docker exec -it rmf_demos_c bash -c "source /ros_entrypoint.sh && ros2 run rmf_demos_tasks dispatch_clean -cs clean_lobby --use_sim_time"
 ```
 
 Robots running Clean and Loop Task:
