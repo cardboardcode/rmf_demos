@@ -73,6 +73,20 @@ ros2 launch rmf_demos_gz office.launch.xml server_uri:="ws://localhost:8000/_int
 
 By specifying `server_uri`, the fleetadapter will update `rmf-web` `api-server` with the latest task and robot states. User can then monitor on-going states and initiate rmf task with an interactive web dashboard.
 
+### RMF-Demo quick start
+
+```bash
+cd $HOME
+```
+
+```bash
+git clone https://github.com/cardboardcode/rmf_demos.git --branch jazzy_gary_dev --depth 1 --single-branch && cd rmf_demos
+```
+
+```bash
+docker build -t rmf_demos:jazzy .
+```
+
 ## Demo Worlds
 
 * [Hotel World](#Hotel-World)
@@ -106,6 +120,9 @@ ros2 launch rmf_demos_gz hotel.launch.xml
 Here, we will showcase 2 types of Tasks: **Loop** and **Clean**, you can dispatch them via CLI as follows:
 ```bash
 ros2 run rmf_demos_tasks dispatch_patrol -p restaurant  L3_master_suite -n 1 --use_sim_time
+```
+
+```bash
 ros2 run rmf_demos_tasks dispatch_clean -cs clean_lobby --use_sim_time
 ```
 
@@ -117,12 +134,6 @@ Robots running Clean and Loop Task:
 
 ### Office World
 An indoor office environment for robots to navigate around. It includes a beverage dispensing station, controllable doors and laneways which are integrated into RMF.
-
-#### Build
-
-```bash
-docker build -t rmf_demos:jazzy .
-```
 
 #### Run
 
