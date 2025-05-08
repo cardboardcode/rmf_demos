@@ -1,0 +1,16 @@
+services:
+   rmf_web_dashboard_demo:
+     container_name: rmf_web_dashboard_demo_c
+     environment:
+      RMF_SERVER_URL: http://localhost:8000
+      TRAJECTORY_SERVER_URL: http://localhost:8006
+     image: cardboardcode/rmf_dashboard:jazzy
+     ports:
+      - "3000:80"
+     network_mode: "host"
+   rmf_web_rmf_server_demo:
+     container_name: rmf_web_rmf_server_demo_c
+     volumes:
+      - /dev/shm:/dev/shm
+     image: cardboardcode/rmf_api_server:jazzy
+     network_mode: "host"
